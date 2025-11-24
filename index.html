@@ -16,7 +16,7 @@
         }
 
         .container {
-            background: #2b2b3d;
+            background: #39415d;
             padding: 20px;
             border-radius: 10px;
             width: 350px;
@@ -110,6 +110,27 @@
         <button id="generateBtn" class="generate">Générer</button>
         <p id="msg"></p>
 
-    </div>        
+    </div> 
+    <script>
+    // Sélecteurs
+    const passwordInput = document.getElementById("password");
+    const lengthInput = document.getElementById("length");
+    const lower = document.getElementById("lower");
+    const upper = document.getElementById("upper");
+    const numbers = document.getElementById("numbers");
+    const symbols = document.getElementById("symbols");
+    const msg = document.getElementById("msg");
+
+    // Boutons
+    const generateBtn = document.getElementById("generateBtn");
+    const copyBtn = document.getElementById("copyBtn");
+
+    // Caractères disponibles
+    const lowerChars = "abcdefghijklmnopqrstuvwxyz";
+    const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numberChars = "0123456789";
+    const symbolChars = "!@#$%^&*()_-+=<>?";
+    </script>
+       
 </body>
 </html>
