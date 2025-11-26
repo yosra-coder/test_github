@@ -69,6 +69,11 @@
             margin: 8px 0;
             text-align: left;
         }
+	    #copyBtn:hover {
+    		background: #4ef757;
+    		transform: scale(1.1);
+    		transition: 0.2s ease;
+	    }
     </style>
 </head>
 <body>
@@ -130,6 +135,16 @@
     const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const numberChars = "0123456789";
     const symbolChars = "!@#$%^&*()_-+=<>?";
+        generateBtn.addEventListener("click", generatePassword);
+
+    // Copier
+    copyBtn.addEventListener("click", () => {
+        passwordInput.select();
+        document.execCommand("copy");
+        msg.textContent = "Copié ! ✔";
+
+        setTimeout(() => msg.textContent = "", 1500);
+        });
     </script>
        
 </body>
