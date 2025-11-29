@@ -5,107 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Générateur de mots de passe</title>
     <style>
+        /*---STYLE GLOBAL--*/
         body {
-            background: #1e1e2f;
-            color: white;
+            background: #1e1e2f; /*fond*/
+            color: white; /*texte*/
             font-family: Arial, sans-serif;
+            font-size: 18px; /*taille du texte */
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            justify-content: center; /*centrer horizontalement*/
+            align-items: center; /*centrer verticalement*/
+            height: 100vh; /*100% de la hauteur de l'écran*/
         }
-
+        /*---CONTENEUR PRINCIPAL---*/
         .container {
             background: #39415d;
             padding: 20px;
             border-radius: 10px;
-            width: 350px;
+            width: 90%;
+            max-width: 500px;
             text-align: center;
         }
-
+        /*--LIGNE DE MOT DE PASSE ET BTN COPIER--*/
         .output {
             display: flex;
             margin-bottom: 15px;
         }
-
+        /*--CHAMP POUR AFFICHER LE MOT DE PASSE Généré--*/
         .output input {
             flex: 0.8;
-            padding: 10px;
+            padding: 12px;
+            font-size: 18px;
             border: none;
             border-radius: 5px 0 0 5px;
         }
-
-        .output button {
-            padding: 0 15px;
+        /*--BTN COPIER--*/
+        #copyBtn {
+            padding: 0 20px;
+            font-size: 16px;
             border: none;
             background: #4caf50;
             cursor: pointer;
             border-radius: 0 5px 5px 0;
+            transition: 0.2s ease;
+            color: white;
         }
-
+        /*--BTN POUR Générer LE MDP--*/
         button.generate {
             margin-top: 10px;
-            padding: 10px 20px;
+            padding: 12px 25px;
             background: #008cff;
             border: none;
             cursor: pointer;
             border-radius: 5px;
             transition: transform 0.2s;
+            font-size: 18px;
         }
-
+        /*--EFFET HOVER SUR LE BTN GENERER--*/
         button.generate:hover {
             transform: scale(1.05);
-            background: #0a9cff;
+            background: #4ddcf9;
         }
-
+        /*--MESSAGE DE RETOUR--*/
         #msg {
             margin-top: 10px;
-            color: #4caf50;
-            font-size: 14px;
-            height: 18px;
+            font-size: 20px;
+            color: #7ced19;
+            height: 22px;
         }
+        /*--OPTIONS--*/
         .options label {
             display: block;
             margin: 8px 0;
             text-align: left;
         }
+        /*--EFFET HOVER SUR BTN COPIER--*/
 	    #copyBtn:hover {
     		background: #4ef757;
     		transform: scale(1.1);
-    		transition: 0.2s ease;
 	    }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Générateur de mots de passe</h1>
-
+        <!--zone de sortie du MDP-->
         <div class="output">
             <input type="text" id="password" readonly>
-            <button id="copyBtn"></button>
+            <button id="copyBtn">Copier</button>
         </div>
-
+        <!--OPTIONS-->
         <div class="options">
+            <!--longueur-->
             <label>
                 Longueur :
                 <input type="number" id="length" min="4" max="30" value="12">
             </label>
-
+            <!--choix:miniscules-->
             <label>
                 <input type="checkbox" id="lower" checked>
                 minuscules (a-z)
             </label>
-
+            <!--choix:majuscules-->
             <label>
                 <input type="checkbox" id="upper" checked>
                 majuscules (A-Z)
             </label>
-
+            <!--choix:chiffres-->
             <label>
                 <input type="checkbox" id="numbers" checked>
                 chiffres (0-9)
             </label>
-
+            <!--choix:symboles-->
             <label>
                 <input type="checkbox" id="symbols">
                 symboles (!@#$)
@@ -117,7 +127,7 @@
 
     </div> 
     <script>
-    // Sélecteurs
+    // Sélecteurs:récupération des élts HTML
     const passwordInput = document.getElementById("password");
     const lengthInput = document.getElementById("length");
     const lower = document.getElementById("lower");
@@ -135,14 +145,39 @@
     const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const numberChars = "0123456789";
     const symbolChars = "!@#$%^&*()_-+=<>?";
-        generateBtn.addEventListener("click", generatePassword);
+    //Génération du MDP
+    function generatePassword() {
+        let length = parseInt(lengthInput.value);
+        let chars = ""; //ens final des caractères possibles
+        //ajout des types choisis
+        if (lower.checked) chars += lowerChars;
+        if (upper.checked) chars += upperChars;
+        if (numbers.checked) chars += numberChars;
+        if (symbols.checked) chars += symbolChars;
+        //si aucun critère sélectionné
+        if (chars === "") {
+            msg.textContent = "Choisissez au moins un critère !";
+            return;
+        }
 
+        let password = "";
+        //génére char par char
+        for (let i = 0; i < length; i++) {
+            let index = Math.floor(Math.random() * chars.length);
+            password += chars[index];
+        }
+        //affiche le MDP ds le champ didié ainsi le msg
+        passwordInput.value = password;
+        msg.textContent = "Mot de passe généré ✔";
+    }
+    //génénrer
+    generateBtn.addEventListener("click", generatePassword);
     // Copier
     copyBtn.addEventListener("click", () => {
         passwordInput.select();
         document.execCommand("copy");
-        msg.textContent = "Copié ! ✔";
-
+        msg.textContent = "Copié ✔";
+        //msg effacé aprés 1.5s
         setTimeout(() => msg.textContent = "", 1500);
         });
     </script>
