@@ -25,7 +25,7 @@ Fonctionnalité "Copier" : Un bouton dédié permet de copier instantanément le
 
 Alerte Utilisateur : Un message s'affiche si l'utilisateur tente de générer un mot de passe sans avoir sélectionné au moins un type de caractère.
 Lien vers la Page GitHub Pages (Rendu Final)
-[CLIQUEZ ICI pour accéder au Générateur de Mots de Passe]https://github.com/yosra-coder/test_github.git 
+https://github.com/yosra-coder/test_github.git 
 
 Nouveautés Explorées
 Gestion des Options de Caractères : J'ai renforcé ma compréhension de la construction dynamique d'une chaîne de caractères (chars) en JavaScript basée sur l'état des cases à cocher (checkboxes). Cela garantit que la génération utilise uniquement les jeux de caractères souhaités par l'utilisateur.
