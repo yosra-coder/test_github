@@ -9,6 +9,7 @@ La longueur du mot de passe (entre 4 et 30 caractères).
 L'inclusion de minuscules, majuscules, chiffres et symboles.
 
 L'objectif est de fournir un outil accessible directement via un navigateur web pour générer un mots de passe d'une manière automatique.
+
 Technologies Utilisées:
 HTML5: Structure de base de la page web et des éléments de formulaire.
 CSS: Stylisation de l'interface utilisateur, gestion du design (couleurs, polices, centrage) et responsivité de base.
@@ -25,6 +26,7 @@ Fonctionnalité "Copier" : Un bouton dédié permet de copier instantanément le
 Alerte Utilisateur : Un message s'affiche si l'utilisateur tente de générer un mot de passe sans avoir sélectionné au moins un type de caractère.
 Lien vers la Page GitHub Pages (Rendu Final)
 [CLIQUEZ ICI pour accéder au Générateur de Mots de Passe]https://github.com/yosra-coder/test_github.git 
+
 Nouveautés Explorées
 Gestion des Options de Caractères : J'ai renforcé ma compréhension de la construction dynamique d'une chaîne de caractères (chars) en JavaScript basée sur l'état des cases à cocher (checkboxes). Cela garantit que la génération utilise uniquement les jeux de caractères souhaités par l'utilisateur.
 
